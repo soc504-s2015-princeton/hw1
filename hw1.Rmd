@@ -1,0 +1,193 @@
+---
+title: "Homework 1: Transforming data"
+author: "your name here"
+date: Due 2015-02-05
+output: html_document
+---
+
+Topics covered in this homework include:
+ 
+- dplyr and the five verbs
+- working with factors
+- third normal form
+- tidy data
+
+
+(@) **Please calculate 2+2 in the space below.**
+
+```{r}
+# [your code here]
+```
+
+### Set-up the soccer data
+
+The code below clears memory and then loads dplyr and the soccer data.
+
+```{r echo=FALSE}
+rm(list=ls())
+suppressPackageStartupMessages(library(dplyr))
+load(url("http://www.princeton.edu/~mjs3/soc504_s2015/CrowdstormingDataJuly1st.RData"))
+soccer.data <- tbl_df(soccer.data)
+```
+
+### A robustness check 
+
+In lab, we calculated the rate of red cards for players of different skin tone.  Now, we are going to see how robust our conclusions were to some of the choices that we made in the analysis.  In particular, it is important to know that in soccer there are actually two ways to get a red card: a direct red card and getting two yellow cards (which equals one red card).
+
+(@directreds) **Create a table like the one were made in lab where the outcome of interest is rate of direct red cards.**
+
+```{r}
+# [your code here]
+```
+
+(@allreds) **Imagine that you submitted the table above in a paper (Of course, in a real paper you would create a graph, but we have not learned `ggplot2` yet.) Create a table like the one above but where the outcome of interest is rate of all forms of red cards (direct red cards + two yellow cards).  The column red.cards is direct red cards and the column yellow.reds is the red cards that result from two yellow cards.**
+
+```{r}
+# [your code here]
+```
+
+(@) In words, compare your answers in questions @directreds and @allreds.  Do this choice make a difference?
+
+```{answer}
+your answer here
+```
+
+### Looking at subsets of the data, by country
+
+Imagine that you presented these results at ASA, and an audience member speculated the relationship between skin tone and red cards would be different in the different soccer leagues.
+
+(@byleague) **Create a table that shows, for each league, the rate of red cards by skin color.  In this case, please use direct red cards (red.cards) as you outcome.**
+
+```{r}
+# [your code here]
+```
+
+(@) **In words, what would you conclude from your response to @byleague?**
+
+```{answer}
+your answer here
+```
+
+## Watch how this works with a different dataset: Gapminder
+
+Just to show you that this all works with different data, you will now do some analysis with the [Gapminder](http://www.gapminder.org/) data, as currated and cleaned by [Jenny Bryan](https://github.com/jennybc/gapminder).
+
+```{r echo=FALSE}
+require(dplyr)
+load(url("http://www.princeton.edu/~mjs3/soc504_s2015/gapminder.RData"))
+gapminder <- tbl_df(gapminder)
+glimpse(gapminder)
+head(gapminder)
+tail(gapminder)
+```
+
+(@) **Is this data in third normal form?**
+
+```{answer}
+your answer here
+```
+
+(@) Explain:
+
+```{answer}
+your answer here
+```
+
+(@) **Is this an optimal structure for data storage?**
+
+```{answer}
+your answer here
+```
+(@) **Is this a sensible structure for data analysis?**
+
+```{answer}
+your answer here
+```
+
+(@) **For each continent, show the mean GDP in each of the years in the data.**
+
+```{r}
+# [your code here]
+```
+
+(@) **Which country had the highest GDP per captia in Africa in 1952?**  Note you don't need to produce a data.frame with a single country to answer this question.  A data.frame with the appropriate countries sorted is enough.
+
+```{r}
+# [your code here]
+```
+
+(@) **Which country had the highest GDP (not GDP per captia) in any year in the data?**  Note you don't need to produce a single country to answer this question.  A data.frame with the appropriate countries sorted is enough.
+
+```{r}
+# [your code here]
+```
+
+(@) **Which continent had the most variation in life expectancy in 2007?** Note you don't need to produce a single country to answer this question.  A data.frame with the appropriate countries sorted is enough.
+
+```{r}
+# [your code here]
+```
+
+(@openq) **Optional challenge: Create a question that will require you to use all 5 `dplyr` verbs: `filter`, `arrange`, `select`, `mutate`, and `summarise`.  Then, write a query to answer it.**
+
+```{answer}
+your answer here
+```
+
+(@) **Challenge problem: Now show the code to answer question @openq.**
+
+```{r}
+# [your code here]
+```
+
+## More practice with data structures
+
+`R` comes with the dataset `ldeaths`, which records the monthly deaths from bronchitis, emphysema and asthma in the UK, 1974–1979.  To see the data type `ldeaths`. For more information type "?ldeaths"
+
+(@) **Is this data tidy?**
+
+```{answer}
+your answer here
+```
+
+(@) **Explain**
+
+```{answer}
+your answer here
+```
+
+`R` comes with the dataset `mtcars`, which shows fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973–74 models), as taken from the 1974 Motor Trend US magazine.  To see the data type `mtcars`.  For more information type "?mtcars"
+
+(@) **Is this data tidy?**
+
+```{answer}
+your answer here
+```
+
+(@) **Explain**
+
+```{answer}
+your answer here
+```
+
+`R` comes with the dataset `quakes`, which shows 1000 seismic events near Fiji.  To see the data type `quakes`.  For more information type "?quakes"
+
+(@) **Is this data tidy?**
+
+```{answer}
+your answer here
+```
+
+(@) **Explain**
+
+```{answer}
+your answer here
+```
+
+#### The command below is helpful for debugging, please don't change it
+
+```{r echo=FALSE}
+sessionInfo()
+```
+
+
